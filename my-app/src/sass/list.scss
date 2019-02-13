@@ -1,0 +1,95 @@
+#list{
+    width:100%  ;
+    display:flex;
+    flex-direction: column;
+
+}
+.nctouch-main-layout {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    // display: block;
+    margin-top: 2rem;
+    background-color: #F5F5F5;
+    margin-bottom: 2.5rem;
+    .categroy-cnt {
+        display: flex;
+        width: 17%;
+        height: 100%x;
+        // display: block;
+        // float: left;
+        // position: absolute;
+        z-index: 1;
+        top: 2rem;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        
+// 左边组件样式
+        .categoty_list {
+            padding: 0 0.5rem;
+            position: absolute;
+            // cubic-bezier(0.1, 0.57, 0.1, 1);
+            transition-duration: 0;
+            transform: translate(0px, 0px) translateZ(0px);
+            
+            .categoty_listItem {
+                width: 2.8rem;
+                height: 2.8rem;
+            }
+            .select{
+               
+                .categoty_leftName {
+                    font-size: 0.6rem;
+                    line-height: 0.9rem;
+                    color: #ED5564;
+                    text-align: center;
+                    width: 100%;
+                    height: 0.9rem;
+                    padding-bottom: 0.25rem;
+                    border-bottom: solid 0.05rem #EEE;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+            }
+             a {
+            display: block;
+            }
+            .ci-fcategory-ico {
+                width: 1rem;
+                height: 1.7rem;
+                padding: 0.1rem 0 0.25rem 0;
+                margin: 0 auto;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    color: #ccc;
+                }
+            }
+        }
+       
+        
+        .categoty_leftName {
+            font-size: 0.6rem;
+            line-height: 0.9rem;
+            color: #333;
+            text-align: center;
+            width: 100%;
+            height: 0.9rem;
+            padding-bottom: 0.25rem;
+            border-bottom: solid 0.05rem #EEE;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+    }
+    #listRight{
+     flex:1; 
+    }
+
+
+    
+}
