@@ -68,7 +68,7 @@ class App extends Component {
                     <Route path="/list" component={list}/>
                     <Route path="/cart" component={cart}/>
                     <Route path="/datail " component={datail }/>
-                    <Route path="/listdatail " component={listdatail }/>
+                    <Route path="/listdatail/:id" component={listdatail }/>
                     <Route path="/mine" component={mine}/>
                     <Route path="/find" component={find}/>
                     <Redirect from="/" to="/home"/>

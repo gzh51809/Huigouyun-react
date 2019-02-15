@@ -1,0 +1,176 @@
+#listdatil{
+    width: 100%;
+    display: flex;
+    flex-direction:column; 
+    .goods-search-list-nav {
+        display: flex;
+        flex-direction:row;
+        width: 100%;
+        height: 1.95rem;
+        background: rgba(255,255,255,0.95);
+        border-bottom: solid 0.05rem #EEE;
+        // position: fixed;
+        // z-index: 2;
+        // top: 2rem;
+        // left: 0;
+        // right: 0;
+        ul {
+            font-size: 0;
+            display: block;
+            width: 85%;
+            // float: left;
+            li{
+                display: flex;
+                justify-content:center;
+                a{
+                    font-size: 0.65rem;
+                    color: #888;
+                    line-height: 1.95rem;
+                    text-align: center;
+                    display: block;
+                    height: 1.95rem;
+                    i {
+                        font-size: 0px;
+                        line-height: 0;
+                        vertical-align: middle;
+                        display: inline-block;
+                        width: 0px;
+                        height: 0px;
+                        margin-left: 0.2rem;
+                        border-width: 0.2rem;
+                        border-color: #AAA transparent transparent transparent;
+                        border-style: solid dashed dashed dashed;
+                    }
+                } 
+            }
+        }
+        .browse-mode {
+            
+            flex:1;
+            // float: right;
+            a {
+                text-align: center;
+                display: block;
+                height: 1.95rem;
+            }
+        }
+    }
+    .nctouch-main-layout{
+        width: 100%;
+        overflow: auto;
+        display: flex;
+        ul{
+            width: 100%;
+            display: flex;
+        }
+        .goods-item {
+            // background-color: #FFF;
+            // display: block;
+            // clear: both;
+            // position: relative;
+            // z-index: auot;
+            display: flex;
+            flex-direction: row;
+            .goods-pic {
+                display: flex;
+                width: 4.62rem;
+                height: 4.62rem;
+                padding: 0.38rem;
+                // position: absolute;
+                z-index: 1;
+                // top: 0;
+                // left: 0;
+                a {
+                    width: 100%;
+                    height: 100%;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+            .goods-info {
+
+                flex:1;
+                flex-direction: row;
+                height: 4.85rem;
+                padding: 0.38rem 0.38rem 0 0;
+                margin-left: 5.38rem;
+                border-bottom: solid 0.05rem #EEE;
+                .goods-name {
+                    display: flex;
+                    height: 2.4rem;
+                    overflow: hidden;
+                    a {
+                        display: block;
+                        color: #111;
+                        h4 {
+                            font-size: 0.65rem;
+                            line-height: 0.8rem;
+                            height: 1.6rem;
+                            overflow: hidden;
+                        }
+                    }
+                }
+                .goods-sale {
+                    display:flex;
+                    height: 0.9rem;
+                    padding: 0.2rem 0;
+                    overflow: hidden;
+                    a {
+                        display: block;
+                        color: #111;
+                        .goods-price {
+                            color: #EC5464;
+                            font-size: 0.6rem;
+                            line-height: 0.9rem;
+                            display: flex;
+                            // float: left;
+                            em {
+                                font-size: 0.8rem;
+                                line-height: 0.9rem;
+                                vertical-align: top;
+                                display: inline-block;
+                            }
+                        }
+                    }
+                }
+                .goods-assist {
+                    display:flex;
+                    flex-direction: row;
+                    height: 1rem;
+                    padding-bottom: 0.2rem;
+                    overflow: hidden;
+                    a {
+
+                        display: flex;
+                        color: #111;
+                        .goods-sold {
+                            font-size: 0.55rem;
+                            line-height: 1rem;
+                            color: #999;
+                            display: flex;
+                            // float: left;
+                            width: 40%;
+                            height: 1rem;
+                            em {
+                                color: #000;
+                                vertical-align: middle;
+                                font-weight: 600;
+                            }
+                        }
+                        .goods-store {
+                            float: right;
+                            font-size: 0.55rem;
+                            line-height: 1rem;
+                            text-align: right;
+                            width: 60%;
+                            height: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
