@@ -7,11 +7,13 @@ import { Tabs, WhiteSpace } from 'antd-mobile';
 class listdatail extends React.Component {
     constructor(props){
         super(props);
+        console.log('first',this.props.match.params.id)
+        let id=this.props.match.params.id;
         this.state={
-            id:this.props.match.params,
+            id:id,
             // 当前页数
             curpage: 1,
-           listdatail:[],
+            listdatail:[],
             //滚动高度：
             scrollHeight: 0,
             hasMore: true,// 判断接口是否还有数据，通过接口设置
@@ -24,7 +26,7 @@ class listdatail extends React.Component {
     componentWillMount () {
         // console.log('idd',this.props)
             this.setState({
-               id:this.props.match.params        
+               id:this.props.match.params.id        
             })
         //  console.log(this.state.id)    
     }
@@ -38,6 +40,7 @@ class listdatail extends React.Component {
     componentWillReceiveProps(nextProps){
         // console.log(nextProps.id)
         let _this=this;
+        
         axios.get('http://www.lechuyigou.com/mobile/index.php?c=goods&a=goods_list&page=10&', {
             params: {
                 curpage:this.state.curpage,
@@ -62,37 +65,47 @@ class listdatail extends React.Component {
     }
     // 处理滚动监听
     handleScroll(){
-        const {hasMore} = this.state;
+        const {hasMore,id} = this.state;
+        console.log('id',id,hasMore);
         if(!hasMore){
             return;
         }
         //下面是判断页面滚动到底部的逻辑
-        if(this.scrollDom.scrollTop + this.scrollDom.clientHeight >= this.scrollDom.scrollHeight){
+        // console.log(parseInt(this.scrollDom.scrollTop + this.scrollDom.clientHeight+1))
+        // console.log('this.scrollDom.scrollHeight',this.scrollDom.scrollHeight)
+        if(parseInt(this.scrollDom.scrollTop + this.scrollDom.clientHeight+1) == this.scrollDom.scrollHeight){
+            // console.log(22);
             if(!hasMore){
                 return;
             }else{
+                console.log(hasMore);
                 this.setState({
-                    currentPage:this.state.currentPage+1,
-                    hasMore:true
-                },()=>{
+                    curpage:this.state.curpage+1,
+                    
+                    // hasMore:true
+                },
+                ()=>{
+                    console.log('this.state.curpage'+this.state.curpage)
                     let _this=this;
+                    console.log(this.state.id)
                     axios.get('http://www.lechuyigou.com/mobile/index.php?c=goods&a=goods_list&page=10&', {
                         params: {
-                            curpage:this.state.curpage,
-                            gc_id:this.state.id
+                            b_id:this.state.id,
+                            curpage:_this.state.curpage,
+                            b_id:this.state.id
                         }
                     })
                     .then(function (response) {
-                        // console.log(1);
-                        this.setState({
+                        console.log(response.data.hasmore);
+                        _this.setState({
                             
-                            hasMore:response.hasMore
+                            hasMore:response.data.hasmore
                         })
                         
-                        // this.state.list=response.data.datas;
-                        let goodsData=this.state.listdatail;
-                        for(var i=0;i<response.data.datas.length;i++){
-                            goodsData.push(response.data.datas[i]);
+                        // this.state.lisst=response.data.datas;
+                        let goodsData=_this.state.listdatail;
+                        for(var i=0;i<response.data.datas.goods_list.length;i++){
+                            goodsData.push(response.data.datas.goods_list[i]);
 
                         }
 
@@ -127,15 +140,15 @@ class listdatail extends React.Component {
 
                 <div className="goods-search-list-nav"  ref='header'>
                     <ul id="nav_ul">
-                    <li><a id="sort_default">综合排序<i></i></a></li>
-                    <li><a >销量优先</a></li>
+                    <li ><a id="sort_default">综合排序<i></i></a></li>
+                    <li onClick={this.handleSell.bind(this)}><a >销量优先</a></li>
                     <li><a id="search_adv" className="current">筛选<i></i></a></li>
                     </ul>
                     <div className="browse-mode"><a href="javascript:void(0);" id="show_style"><span className="browse-list"></span></a></div>
                 </div>
                 {/* 商品列表区域 */}
                 {/* 绑定滚动事件 */}
-                <div className="nctouch-main-layout" ref={body=>this.scrollDom = body} style={{height: scrollHeight}} onScroll={this.handleScroll.bind(this)}>
+                <div className="nctouch-main-layout" ref={body=>this.scrollDom = body} style={{height: scrollHeight,overflow:'auto'}} onScroll={this.handleScroll.bind(this)}>
                     <div id="product_list" className="list"> 
                          <ul className="goods-secrch-list">
                         {
