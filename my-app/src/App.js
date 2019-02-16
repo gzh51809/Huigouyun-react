@@ -67,11 +67,11 @@ class App extends Component {
                     <Route path="/home" component={home}/>
                     <Route path="/list" component={list}/>
                     <Route path="/cart" component={cart}/>
-                    <Route path="/datail " component={datail }/>
-                    <Route path="/listdatail/:id" component={listdatail }/>
+                    <Route path="/datail/:id" component={datail}/>
+                    <Route path="/listdatail/:id" component={listdatail}/>
                     <Route path="/mine" component={mine}/>
                     <Route path="/find" component={find}/>
-                    <Redirect from="/" to="/home"/>
+                    <Redirect from="/" to="/list"/>
                     {/* <Route path="/" component={Home} exact/> */}
             </Switch>
             <div id='footer'> 

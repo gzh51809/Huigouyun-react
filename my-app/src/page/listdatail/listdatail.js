@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 // import  '../../sass/find.scss';
 // import  '../../sass/listDatil.scss';
 import axios from'axios';
+import {withRouter} from 'react-router-dom';
 
 import { Tabs, WhiteSpace } from 'antd-mobile';
 class listdatail extends React.Component {
@@ -18,9 +19,12 @@ class listdatail extends React.Component {
             scrollHeight: 0,
             hasMore: true,// 判断接口是否还有数据，通过接口设置
             // isVisible:false//检查子组件是否在可视区域内
+            key: 1,
+            order: 2
             }
             this.handleScroll=this.handleScroll.bind(this)
-
+            this.handleSell=this.handleSell.bind(this)
+            this.handleDatail= this.handleDatail.bind(this);
     }
     
     componentWillMount () {
@@ -92,7 +96,8 @@ class listdatail extends React.Component {
                         params: {
                             b_id:this.state.id,
                             curpage:_this.state.curpage,
-                            b_id:this.state.id
+                            b_id:this.state.id,
+                           
                         }
                     })
                     .then(function (response) {
@@ -125,11 +130,45 @@ class listdatail extends React.Component {
         }
     }
 
+    // 处理销量优先加载
+    handleSell(){
+        let _this=this;
+        
+        axios.get('http://www.lechuyigou.com/mobile/index.php?c=goods&a=goods_list&page=10&', {
+            params: {
+                b_id:_this.state.id,
+                curpage:this.state.curpage,
+                b_id:_this.state.id,
+                key:this.state.key,
+                order: this.state.order
+            }
+          })
+          .then(function (response) {
+              console.log(response)
+           let goodslist=response.data.datas.goods_list.sort((a,b)=>b.is_presell-a.is_presell);
+            _this.setState({
+                listdatail:goodslist,
+                // curpage:this.state.curpage,
+                loading:false
+            })
+            // console.log(_this.state.listdatail);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
     // fetchData(pageIndex,){
     //     // 接口调用数据字段
     //     //传入的参数包括但不限于：pageIndex， pageSize。。。
     //     // 获取后更新的数据包括但不限于：dataList，hasMore。。。
     // }
+    handleDatail(id){
+        let {history}=this.props;
+        console.log(this.props)
+        console.log('id',id)
+        history.push({pathname:'/datail/'+id});
+        
+    }
     render(){
         // 获取滚动高度
         const {scrollHeight} = this.state;
@@ -153,7 +192,7 @@ class listdatail extends React.Component {
                          <ul className="goods-secrch-list">
                         {
                             this.state.listdatail.map(val=>(
-                                <li className="goods-item"  key={val.goods_id}>
+                                <li className="goods-item"  key={val.goods_id} onClick={ this.handleDatail.bind(this,val.goods_id)}>
                                 <span className="goods-pic">
                                     <a>
                                         <img src={val.goods_image_url}/>
@@ -194,4 +233,5 @@ class listdatail extends React.Component {
         )
     }
 }
+// listdatail=withRouter(listdatail)
 export default listdatail;
