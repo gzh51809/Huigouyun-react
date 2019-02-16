@@ -1,68 +1,85 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# `乐厨易购APP` #
+<h3>react移动端项目
 
-In the project directory, you can run:
+##作者：刘伟英 ##
+## 项目架构 ##
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+-  开发IDE：Visual Studio
+ 
 
-### `npm test`
+- 前端开发：React + Redux + Ant Design + webpack + jsx，兼容Chrome，使用rem、flex、百分比布局
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 后端开发：NodeJS(11.1.0) 
 
-### `npm run build`
+<h2>项目演示地址：http://39.108.252.230：3001/#/list
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 项目目录结构
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   
+	|-- package-lock.json 
 
-### `npm run eject`
+    |-- package.json
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    |-- README.md
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    |-- build   npm build后的文件供上线使用
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    |-- config -配置文件
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    |-- public 项目模板文件
+   
+    |-- scripts 关于build/test/start
 
-## Learn More
+    |-- src 开发目录
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+        |-- App.js 主组件
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        |-- index.js 入口文件
+      
+        |-- serviceWorker.js
 
-### Code Splitting
+        |-- img  引入图片资源
+        
+        |-- page 各个页面组件
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+        |   |-- cart 购物车
 
-### Analyzing the Bundle Size
+        |   |   |-- cart.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+        |   |-- datail 详情页
 
-### Making a Progressive Web App
+        |   |   |-- datail.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+        |   |-- find 搜索
 
-### Advanced Configuration
+        |   |   |-- find.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+        |   |-- home 首页
 
-### Deployment
+        |   |   |-- home.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+        |   |-- list 分类页
 
-### `npm run build` fails to minify
+        |   |   |-- list.js 分类页父组件
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+        |   |   |-- listRight.js  分类页右侧组件
+
+        |   |-- listdatail 列表页
+
+        |   |   |-- listdatail.js
+
+        |   |-- mine 我的
+
+        |       |-- mine.js
+
+        |-- router
+
+        |   |-- index.js
+
+        |-- sass 各页面的样式
+
+            
